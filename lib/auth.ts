@@ -1,10 +1,10 @@
-import { connectDB } from "@/libs/mongodb";
+import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 import type { NextAuthOptions } from "next-auth";
 import credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
-export const authOptions: NextAuthOptions  = {
+export const authOptions: NextAuthOptions = {
   providers: [
     credentials({
       name: "Credentials",
@@ -33,5 +33,5 @@ export const authOptions: NextAuthOptions  = {
   ],
   session: {
     strategy: "jwt",
-  }
+  },
 };
