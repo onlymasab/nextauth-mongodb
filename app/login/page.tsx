@@ -8,9 +8,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const handleSubmit = async (formData: FormData) => {
     const res = await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
@@ -29,7 +27,7 @@ export default function Login() {
       <form
         className="p-6 w-full max-w-[400px] flex flex-col justify-between items-center gap-2 
         border border-solid border-black bg-white rounded text-black"
-        onSubmit={handleSubmit}
+        action={handleSubmit}
       >
         {error && <div className="text-black">{error}</div>}
         <h1 className="mb-5 w-full text-2xl font-bold">Sign In</h1>
