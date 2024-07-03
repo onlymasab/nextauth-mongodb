@@ -9,9 +9,7 @@ export default function Register() {
   const router = useRouter();
   const ref = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  const handleSubmit = async (formData: FormData) => {
     const r = await register({
       email: formData.get("email"),
       password: formData.get("password"),
@@ -30,7 +28,7 @@ export default function Register() {
     <section className="w-full h-screen flex items-center justify-center">
       <form
         ref={ref}
-        onSubmit={handleSubmit}
+        action={handleSubmit}
         className="p-6 w-full max-w-[400px] flex flex-col justify-between items-center gap-2 
             border border-solid border-black bg-white rounded text-black"
       >
@@ -63,9 +61,7 @@ export default function Register() {
           />
         </div>
 
-        <button
-          className="w-full rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-        >
+        <button className="w-full rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
           Sign up
         </button>
 
